@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReLoop — Products Made from Recycled Plastic</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6F0;
+    --warm-white: #FDF9F4;
+    --terracotta: #C4644A;
+    --terracotta-light: #E8957E;
+    --terracotta-dark: #9A4535;
+    --amber: #D4922A;
+    --amber-light: #F2C46A;
+    --sand: #E8D5B7;
+    --sand-dark: #C9B393;
+    --brown: #5C3D2E;
+    --brown-light: #8B6350;
+    --moss: #6B7C4E;
+    --moss-light: #9BA87A;
+    --text-dark: #2D1E15;
+    --text-mid: #6B4F40;
+    --text-light: #A08878;
+    --border: #E2D0BF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ───── HEADER ───── */
+  header {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  .header-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; font-weight: 700;
+    color: var(--terracotta);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .logo-icon {
+    width: 32px; height: 32px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 14px;
+  }
+
+  nav { display: flex; gap: 2rem; }
+
+  nav a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 0.9rem; font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  nav a:hover, nav a.active { color: var(--terracotta); }
+
+  .header-actions { display: flex; align-items: center; gap: 1rem; }
+
+  .btn-icon {
+    width: 40px; height: 40px;
+    border: 1.5px solid var(--border);
+    border-radius: 50%;
+    background: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-mid);
+    font-size: 1.1rem;
+    transition: all 0.2s; position: relative;
+  }
+
+  .btn-icon:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  .badge {
+    position: absolute; top: -4px; right: -4px;
+    background: var(--terracotta);
+    color: white; font-size: 10px; font-weight: 600;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ───── MAIN LAYOUT ───── */
+  main { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+
+  /* ───── PAGES ───── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ───── HERO ───── */
+  .hero {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    padding: 5rem 0 4rem;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--amber-light);
+    color: var(--brown);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    color: var(--terracotta);
+  }
+
+  .hero p {
+    color: var(--text-mid);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: white;
+    border: none; cursor: pointer;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--terracotta-dark); }
+
+  .btn-secondary {
+    background: none;
+    color: var(--text-dark);
+    border: 1.5px solid var(--border);
+    cursor: pointer;
+    padding: 14px 32px;
+    border-radius: 4px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+  .hero-visual {
+    position: relative;
+    height: 480px;
+  }
+
+  .hero-blob {
+    position: absolute;
+    width: 380px; height: 380px;
+    background: var(--sand);
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: morphBlob 8s ease-in-out infinite;
+  }
+
+  @keyframes morphBlob {
+    0%, 100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+    50% { border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%; }
+  }
+
+  .hero-product-card {
+    position: absolute;
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem;
+    box-shadow: 0 8px 30px rgba(92,61,46,0.1);
+    animation: floatCard 6s ease-in-out infinite;
+  }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-product-card:nth-child(2) { top: 10%; left: 5%; width: 150px; animation-delay: 0s; }
+  .hero-product-card:nth-child(3) { top: 20%; right: 0; width: 160px; animation-delay: -2s; }
+  .hero-product-card:nth-child(4) { bottom: 10%; left: 15%; width: 155px; animation-delay: -4s; }
+
+  .hero-mini-img {
+    width: 100%; height: 80px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+
+  .hero-mini-name {
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .hero-mini-price {
+    font-size: 0.75rem;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ───── STATS ───── */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 5rem;
+  }
+
+  .stat-item {
+    background: var(--warm-white);
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--terracotta);
+  }
+
+  .stat-label {
+    font-size: 0.8rem; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  /* ───── SECTION HEADER ───── */
+  .section-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 600;
+  }
+
+  .section-link {
+    color: var(--terracotta);
+    text-decoration: none;
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  /* ───── PRODUCT GRID ───── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .product-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(92,61,46,0.12);
+  }
+
+  .product-img {
+    width: 100%; height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 5rem;
+    position: relative;
+    transition: transform 0.3s;
+  }
+
+  .product-card:hover .product-img { transform: scale(1.03); }
+
+  .product-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--amber-light);
+    color: var(--brown);
+    font-size: 0.7rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+
+  .product-badge.eco { background: #D4E6C3; color: #3B6011; }
+  .product-badge.new { background: var(--terracotta-light); color: white; }
+
+  .product-info { padding: 1.2rem 1.4rem 1.4rem; }
+
+  .product-category {
+    font-size: 0.72rem; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .product-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .product-desc {
+    font-size: 0.82rem; color: var(--text-light);
+    line-height: 1.5; margin-bottom: 1rem;
+  }
+
+  .product-footer {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .product-price {
+    font-size: 1.15rem; font-weight: 600;
+    color: var(--text-dark);
+  }
+
+  .product-price span {
+    font-size: 0.8rem; color: var(--text-light);
+    font-weight: 400; margin-left: 4px;
+  }
+
+  .btn-cart {
+    background: var(--terracotta);
+    color: white; border: none; cursor: pointer;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-cart:hover { background: var(--terracotta-dark); transform: scale(1.1); }
+  .btn-cart:active { transform: scale(0.95); }
+
+  /* ───── CATEGORIES ───── */
+  .categories {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .cat-card {
+    border-radius: 16px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.25s;
+    position: relative; overflow: hidden;
+    min-height: 200px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+  }
+
+  .cat-card:hover { transform: translateY(-4px); }
+  .cat-card:nth-child(1) { background: var(--sand); }
+  .cat-card:nth-child(2) { background: #D5E8D4; }
+  .cat-card:nth-child(3) { background: #F5DDD5; }
+
+  .cat-icon {
+    font-size: 4rem;
+    position: absolute; top: 1.5rem; right: 1.5rem;
+    opacity: 0.6;
+  }
+
+  .cat-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .cat-count {
+    font-size: 0.8rem; color: var(--text-mid);
+  }
+
+  /* ───── BANNER ───── */
+  .banner {
+    background: var(--brown);
+    border-radius: 20px;
+    padding: 4rem;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 3rem; align-items: center;
+    margin-bottom: 5rem;
+  }
+
+  .banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--sand);
+    margin-bottom: 1rem;
+  }
+
+  .banner p {
+    color: var(--sand-dark);
+    font-size: 0.95rem; line-height: 1.6;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    max-width: 480px;
+  }
+
+  .banner-icon { font-size: 6rem; opacity: 0.6; }
+
+  /* ───── CATALOGUE PAGE ───── */
+  .catalogue-layout {
+    display: grid; grid-template-columns: 240px 1fr;
+    gap: 3rem; padding: 3rem 0 5rem;
+  }
+
+  .filters h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; margin-bottom: 1.2rem;
+  }
+
+  .filter-group { margin-bottom: 2rem; }
+
+  .filter-group label {
+    display: block; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-light); margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+
+  .filter-item {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 0.6rem; cursor: pointer;
+  }
+
+  .filter-item input[type="checkbox"] {
+    width: 16px; height: 16px;
+    accent-color: var(--terracotta);
+  }
+
+  .filter-item span { font-size: 0.88rem; color: var(--text-mid); }
+
+  .filter-item .count {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background: var(--sand);
+    padding: 2px 7px; border-radius: 10px;
+  }
+
+  .price-range {
+    display: flex; gap: 8px; align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .price-range input {
+    width: 80px; padding: 6px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    background: var(--warm-white);
+    color: var(--text-dark);
+  }
+
+  /* ───── CART PAGE ───── */
+  .cart-layout {
+    display: grid; grid-template-columns: 1fr 360px;
+    gap: 3rem; padding: 3rem 0 5rem; align-items: start;
+  }
+
+  .cart-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; margin-bottom: 2rem;
+  }
+
+  .cart-item {
+    display: flex; gap: 1.2rem; align-items: flex-start;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cart-item-img {
+    width: 80px; height: 80px;
+    background: var(--sand);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.2rem; flex-shrink: 0;
+  }
+
+  .cart-item-info { flex: 1; }
+
+  .cart-item-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; margin-bottom: 4px;
+  }
+
+  .cart-item-sub {
+    font-size: 0.8rem; color: var(--text-light);
+    margin-bottom: 10px;
+  }
+
+  .qty-control {
+    display: inline-flex; align-items: center;
+    border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    background: none; border: none; cursor: pointer;
+    padding: 6px 14px; font-size: 1rem;
+    color: var(--text-mid);
+    transition: background 0.15s;
+  }
+
+  .qty-btn:hover { background: var(--sand); }
+
+  .qty-num {
+    padding: 6px 12px;
+    font-weight: 600; font-size: 0.9rem;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+  }
+
+  .cart-item-price {
+    font-size: 1rem; font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+  }
+
+  .cart-remove {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-light); font-size: 1.1rem;
+    padding: 4px; transition: color 0.2s;
+  }
+
+  .cart-remove:hover { color: var(--terracotta); }
+
+  .cart-summary {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .cart-summary h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; margin-bottom: 1.5rem;
+  }
+
+  .summary-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem; margin-bottom: 0.8rem;
+    color: var(--text-mid);
+  }
+
+  .summary-row.total {
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--text-dark);
+    border-top: 1px solid var(--border);
+    padding-top: 1rem; margin-top: 0.5rem;
+  }
+
+  .eco-saving {
+    background: #EEF7E7;
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1.2rem 0;
+    font-size: 0.82rem;
+    color: #3B6011;
+    line-height: 1.5;
+  }
+
+  /* ───── PROFILE PAGE ───── */
+  .profile-layout {
+    display: grid; grid-template-columns: 280px 1fr;
+    gap: 3rem; padding: 3rem 0 5rem;
+  }
+
+  .profile-sidebar {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    height: fit-content;
+  }
+
+  .avatar {
+    width: 80px; height: 80px;
+    background: var(--sand);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+    border: 3px solid var(--terracotta-light);
+  }
+
+  .profile-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; margin-bottom: 4px;
+  }
+
+  .profile-email {
+    font-size: 0.82rem; color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .profile-level {
+    background: var(--amber-light);
+    color: var(--brown);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    display: inline-block; margin-bottom: 1.5rem;
+  }
+
+  .sidebar-nav { text-align: left; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+
+  .sidebar-nav-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px; border-radius: 8px;
+    cursor: pointer; margin-bottom: 4px;
+    font-size: 0.88rem; color: var(--text-mid);
+    transition: all 0.15s;
+  }
+
+  .sidebar-nav-item:hover, .sidebar-nav-item.active {
+    background: var(--sand);
+    color: var(--terracotta);
+  }
+
+  .profile-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; margin-bottom: 2rem;
+  }
+
+  .eco-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; margin-bottom: 2rem;
+  }
+
+  .eco-stat {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+  }
+
+  .eco-stat-icon { font-size: 1.8rem; margin-bottom: 8px; }
+
+  .eco-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 700;
+    color: var(--terracotta);
+  }
+
+  .eco-stat-label {
+    font-size: 0.75rem; color: var(--text-light);
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+
+  .order-card {
+    background: var(--warm-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+
+  .order-num { font-weight: 600; font-size: 0.9rem; flex: 1; }
+  .order-date { font-size: 0.82rem; color: var(--text-light); flex: 1; }
+  .order-status {
+    background: #D4E6C3; color: #3B6011;
+    font-size: 0.75rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+
+  .order-total { font-weight: 700; color: var(--text-dark); }
+
+  /* ───── TOAST ───── */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--brown);
+    color: var(--sand);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    transform: translateY(120px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1000;
+    max-width: 280px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  /* ───── FOOTER ───── */
+  footer {
+    background: var(--brown);
+    color: var(--sand-dark);
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem; margin-bottom: 3rem;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: var(--sand);
+    margin-bottom: 1rem;
+  }
+
+  .footer-desc {
+    font-size: 0.85rem; line-height: 1.7;
+    font-weight: 300; opacity: 0.8;
+  }
+
+  .footer-col h4 {
+    font-size: 0.8rem; text-transform: uppercase;
+    letter-spacing: 0.1em; font-weight: 600;
+    color: var(--sand); margin-bottom: 1rem;
+  }
+
+  .footer-col a {
+    display: block; text-decoration: none;
+    font-size: 0.85rem; color: var(--sand-dark);
+    margin-bottom: 0.6rem;
+    opacity: 0.8; transition: opacity 0.2s;
+    cursor: pointer;
+  }
+
+  .footer-col a:hover { opacity: 1; color: var(--sand); }
+
+  .footer-bottom {
+    max-width: 1280px; margin: 0 auto; padding: 0 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+    display: flex; justify-content: space-between;
+    font-size: 0.8rem; opacity: 0.5;
+  }
+
+  /* ───── RESPONSIVE ───── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { display: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .categories { grid-template-columns: 1fr 1fr; }
+    .catalogue-layout { grid-template-columns: 1fr; }
+    .cart-layout { grid-template-columns: 1fr; }
+    .profile-layout { grid-template-columns: 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    nav { display: none; }
+    .eco-stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───── HEADER ───── -->
+<header>
+  <div class="header-inner">
+    <a class="logo" onclick="showPage('home')">
+      <div class="logo-icon">♻</div>
+      ReLoop
+    </a>
+    <nav>
+      <a onclick="showPage('home')" id="nav-home" class="active">Home</a>
+      <a onclick="showPage('catalogue')" id="nav-catalogue">Catalogue</a>
+      <a onclick="showPage('home')" id="nav-about">About</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-icon" onclick="showPage('profile')" title="Profile">👤</button>
+      <button class="btn-icon" onclick="showPage('cart')" title="Cart">
+        🛒
+        <span class="badge" id="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ───── HOME PAGE ───── -->
+<div id="page-home" class="page active">
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="hero-tag">♻ 100% Recycled Plastic</div>
+        <h1>Things that <em>care</em> for the planet</h1>
+        <p>Unique items 3D-printed from recycled plastic. Every purchase is a step toward a cleaner future.</p>
+        <div class="hero-btns">
+          <button class="btn-primary" onclick="showPage('catalogue')">Shop Now</button>
+          <button class="btn-secondary" onclick="showPage('home')">Learn More</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-blob"></div>
+        <div class="hero-product-card">
+          <div class="hero-mini-img" style="background:#F5DDD5">🌱</div>
+          <div class="hero-mini-name">Herb Planter</div>
+          <div class="hero-mini-price">$2.99</div>
+        </div>
+        <div class="hero-product-card">
+          <div class="hero-mini-img" style="background:#D5E8D4">🪴</div>
+          <div class="hero-mini-name">Phone Stand</div>
+          <div class="hero-mini-price">$1.99</div>
+        </div>
+        <div class="hero-product-card">
+          <div class="hero-mini-img" style="background:#E8D5B7">☕</div>
+          <div class="hero-mini-name">Cup Coaster</div>
+          <div class="hero-mini-price">$1.49</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-num">12 t</div>
+        <div class="stat-label">Plastic Recycled</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4 800+</div>
+        <div class="stat-label">Items Sold</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0%</div>
+        <div class="stat-label">Virgin Material</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">CO₂ −34%</div>
+        <div class="stat-label">Below Average</div>
+      </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="section-header">
+      <h2 class="section-title">Categories</h2>
+    </div>
+    <div class="categories">
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <span class="cat-icon">🏠</span>
+        <div class="cat-name">Home & Decor</div>
+        <div class="cat-count">42 items</div>
+      </div>
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <span class="cat-icon">🌿</span>
+        <div class="cat-name">Eco Garden</div>
+        <div class="cat-count">18 items</div>
+      </div>
+      <div class="cat-card" onclick="showPage('catalogue')">
+        <span class="cat-icon">📱</span>
+        <div class="cat-name">Gadgets & Organizers</div>
+        <div class="cat-count">26 items</div>
+      </div>
+    </div>
+
+    <!-- Featured Products -->
+    <div class="section-header">
+      <h2 class="section-title">Featured Products</h2>
+      <a class="section-link" onclick="showPage('catalogue')">Full Catalogue →</a>
+    </div>
+    <div class="products-grid" id="home-products"></div>
+
+    <!-- Banner -->
+    <div class="banner">
+      <div>
+        <h2>Every purchase saves a plastic bottle</h2>
+        <p>We use only secondary raw materials: PET bottles, caps, food packaging. Our products are created with care for both the environment and aesthetics.</p>
+        <button class="btn-primary" onclick="showPage('catalogue')">Start Shopping</button>
+      </div>
+      <div class="banner-icon">♻️</div>
+    </div>
+  </main>
+</div>
+
+<!-- ───── CATALOGUE PAGE ───── -->
+<div id="page-catalogue" class="page">
+  <main>
+    <div class="catalogue-layout">
+      <aside class="filters">
+        <h3>Filters</h3>
+        <div class="filter-group">
+          <label>Category</label>
+          <div class="filter-item"><input type="checkbox" checked><span>Home Decor</span><span class="count">42</span></div>
+          <div class="filter-item"><input type="checkbox" checked><span>Garden & Plants</span><span class="count">18</span></div>
+          <div class="filter-item"><input type="checkbox" checked><span>Organizers</span><span class="count">26</span></div>
+          <div class="filter-item"><input type="checkbox" checked><span>Lighting</span><span class="count">14</span></div>
+          <div class="filter-item"><input type="checkbox" checked><span>For Kids</span><span class="count">9</span></div>
+        </div>
+        <div class="filter-group">
+          <label>Material</label>
+          <div class="filter-item"><input type="checkbox" checked><span>PET (bottles)</span></div>
+          <div class="filter-item"><input type="checkbox" checked><span>HDPE (caps)</span></div>
+          <div class="filter-item"><input type="checkbox"><span>PP (packaging)</span></div>
+          <div class="filter-item"><input type="checkbox"><span>ABS (electronics)</span></div>
+        </div>
+        <div class="filter-group">
+          <label>Price ($)</label>
+          <div class="price-range">
+            <input type="number" value="1" placeholder="From">
+            <span style="color:var(--text-light)">—</span>
+            <input type="number" value="20" placeholder="To">
+          </div>
+        </div>
+        <div class="filter-group">
+          <label>Sort by</label>
+          <select style="width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;background:var(--warm-white);font-family:Jost,sans-serif;font-size:0.85rem;color:var(--text-dark);">
+            <option>Most Popular</option>
+            <option>Price: Low to High</option>
+            <option>Price: High to Low</option>
+            <option>Newest First</option>
+          </select>
+        </div>
+      </aside>
+      <div>
+        <div style="margin-bottom:2rem;font-size:0.85rem;color:var(--text-light)">Found <strong style="color:var(--text-dark)">86 products</strong></div>
+        <div class="products-grid" id="catalogue-products"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ───── CART PAGE ───── -->
+<div id="page-cart" class="page">
+  <main>
+    <div class="cart-layout">
+      <div>
+        <h1 class="cart-title">Cart</h1>
+        <div id="cart-items-list"></div>
+        <div id="cart-empty" style="display:none;text-align:center;padding:4rem 0;color:var(--text-light)">
+          <div style="font-size:4rem;margin-bottom:1rem">🛒</div>
+          <div style="font-size:1.1rem;margin-bottom:1.5rem">Your cart is empty</div>
+          <button class="btn-primary" onclick="showPage('catalogue')">Browse Catalogue</button>
+        </div>
+      </div>
+      <div>
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">0 ₸</span></div>
+          <div class="summary-row"><span>Shipping</span><span>Free</span></div>
+          <div class="eco-saving">🌱 You will save approximately <strong id="eco-bottles">0</strong> plastic bottles from landfill</div>
+          <div class="summary-row total"><span>Total</span><span id="cart-total">0 ₸</span></div>
+          <button class="btn-primary" style="width:100%;margin-top:1.2rem;padding:16px" onclick="checkout()">Checkout</button>
+          <button class="btn-secondary" style="width:100%;margin-top:0.7rem;padding:12px" onclick="showPage('catalogue')">Continue Shopping</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ───── PROFILE PAGE ───── -->
+<div id="page-profile" class="page">
+  <main>
+    <div class="profile-layout">
+      <aside class="profile-sidebar">
+        <div class="avatar">👤</div>
+        <div class="profile-name">Aliya Bekova</div>
+        <div class="profile-email">aliya@example.com</div>
+        <div class="profile-level">🌿 Eco Ambassador</div>
+        <nav class="sidebar-nav">
+          <div class="sidebar-nav-item active">📦 My Orders</div>
+          <div class="sidebar-nav-item">❤️ Wishlist</div>
+          <div class="sidebar-nav-item">📍 Delivery Addresses</div>
+          <div class="sidebar-nav-item">💳 Payment</div>
+          <div class="sidebar-nav-item">⚙️ Settings</div>
+          <div class="sidebar-nav-item" style="margin-top:1rem;border-top:1px solid var(--border);padding-top:1rem">🚪 Sign Out</div>
+        </nav>
+      </aside>
+      <div class="profile-content">
+        <h2>My Eco Footprint</h2>
+        <div class="eco-stats">
+          <div class="eco-stat">
+            <div class="eco-stat-icon">♻️</div>
+            <div class="eco-stat-num">3.2 kg</div>
+            <div class="eco-stat-label">Plastic Recycled</div>
+          </div>
+          <div class="eco-stat">
+            <div class="eco-stat-icon">🍃</div>
+            <div class="eco-stat-num">-18 kg</div>
+            <div class="eco-stat-label">CO₂ saved</div>
+          </div>
+          <div class="eco-stat">
+            <div class="eco-stat-icon">🏅</div>
+            <div class="eco-stat-num">7</div>
+            <div class="eco-stat-label">Orders placed</div>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom:1.5rem;margin-top:2rem">Order History</h2>
+        <div class="order-card">
+          <div>
+            <div class="order-num">#RL-20240118</div>
+          </div>
+          <div class="order-date">April 18, 2026</div>
+          <div><span class="order-status">Delivered</span></div>
+          <div class="order-total">$6.99</div>
+        </div>
+        <div class="order-card">
+          <div>
+            <div class="order-num">#RL-20240102</div>
+          </div>
+          <div class="order-date">April 2, 2026</div>
+          <div><span class="order-status">Delivered</span></div>
+          <div class="order-total">$3.99</div>
+        </div>
+        <div class="order-card">
+          <div>
+            <div class="order-num">#RL-20240315</div>
+          </div>
+          <div class="order-date">March 15, 2026</div>
+          <div><span class="order-status" style="background:#FFF0DC;color:#854F0B">In Transit</span></div>
+          <div class="order-total">$7.49</div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ───── FOOTER ───── -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">♻ ReLoop</div>
+      <p class="footer-desc">We craft beautiful, functional objects from recycled plastic using 3D printing. Every piece is unique and eco-friendly.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Catalogue</h4>
+      <a>Home Decor</a>
+      <a>Garden & Plants</a>
+      <a>Organizers</a>
+      <a>Lighting</a>
+      <a>For Kids</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a>About</a>
+      <a>Our Process</a>
+      <a>Sustainability</a>
+      <a>Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a>Shipping</a>
+      <a>Returns</a>
+      <a>Contact</a>
+      <a>FAQ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ReLoop. All rights reserved.</span>
+    <span>Made with ♥ for the planet</span>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const PRODUCTS = [
+  { id:1, name:'Herb Planter', category:'Garden & Plants', price:3.99, emoji:'🌿', bg:'#D5E8D4', badge:'eco', desc:'Made from recycled PET. Drainage holes, matte finish.' },
+  { id:2, name:'Phone Stand', category:'Organizers', price:2.99, emoji:'📱', bg:'#E8D5B7', badge:'new', desc:'Adjustable tilt angle, compatible with all smartphones.' },
+  { id:3, name:'Desk Organizer', category:'Home Decor', price:3.99, emoji:'✏️', bg:'#F5DDD5', badge:'', desc:'6 compartments, stable base, matte finish.' },
+  { id:4, name:'Cup Coaster Set', category:'Home Decor', price:1.99, emoji:'☕', bg:'#E8D5B7', badge:'eco', desc:'Set of 4. Protects table surfaces, easy to clean.' },
+  { id:5, name:'Wall Planter', category:'Garden & Plants', price:4.99, emoji:'🪴', bg:'#D5E8D4', badge:'new', desc:'Mounting hardware included, great for succulents and herbs.' },
+  { id:6, name:'Bookends', category:'Home Decor', price:4.99, emoji:'📚', bg:'#F5DDD5', badge:'', desc:'Pair of bookends, non-slip base, stylish design.' },
+  { id:7, name:'Mushroom Night Light', category:'Home Decor', price:7.99, emoji:'🍄', bg:'#FAE8D5', badge:'new', desc:'USB-charged, soft warm glow, 3 brightness levels.' },
+  { id:8, name:'Jewelry Tray', category:'Organizers', price:2.99, emoji:'💍', bg:'#F5DDD5', badge:'eco', desc:'6 cells, velvet bottom, perfect for rings and earrings.' },
+  { id:9, name:'Bird Feeder', category:'Garden & Plants', price:4.99, emoji:'🐦', bg:'#D5E8D4', badge:'eco', desc:'Suction cup window mount, transparent seed reservoir.' },
+  { id:10, name:'Spice Rack', category:'Home Decor', price:5.99, emoji:'🧂', bg:'#E8D5B7', badge:'', desc:'12 slots, smooth rotating mechanism, perfect for kitchens.' },
+  { id:11, name:'Geo Pot 3D', category:'Garden & Plants', price:3.99, emoji:'🌺', bg:'#D5E8D4', badge:'new', desc:'Geometric design, suitable for medium-sized plants.' },
+  { id:12, name:'Cable Clips', category:'Organizers', price:1.99, emoji:'🔌', bg:'#E8D5B7', badge:'eco', desc:'Set of 5. Adhesive mount, 3 sizes included.' },
+];
+
+let cart = [];
+
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  const navEl = document.getElementById('nav-' + name);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo(0, 0);
+  if (name === 'cart') renderCart();
+}
+
+function renderProducts(containerId, products) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = products.map(p => `
+    <div class="product-card">
+      <div class="product-img" style="background:${p.bg}">
+        ${p.emoji}
+        ${p.badge ? `<span class="product-badge ${p.badge}">${p.badge === 'eco' ? '♻ Eco' : p.badge === 'new' ? 'New' : ''}</span>` : ''}
+      </div>
+      <div class="product-info">
+        <div class="product-category">${p.category}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-footer">
+          <div class="product-price">${p.price.toFixed(2)} <span>USD</span></div>
+          <button class="btn-cart" onclick="addToCart(${p.id})">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addToCart(id) {
+  const product = PRODUCTS.find(p => p.id === id);
+  const existing = cart.find(c => c.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...product, qty: 1 });
+  updateBadge();
+  showToast(`${product.emoji} ${product.name} added to cart`);
+}
+
+function updateBadge() {
+  const total = cart.reduce((s, c) => s + c.qty, 0);
+  document.getElementById('cart-badge').textContent = total;
+}
+
+function renderCart() {
+  const list = document.getElementById('cart-items-list');
+  const empty = document.getElementById('cart-empty');
+
+  if (cart.length === 0) {
+    list.innerHTML = '';
+    empty.style.display = 'block';
+    document.getElementById('cart-subtotal').textContent = '$0.00';
+    document.getElementById('cart-total').textContent = '$0.00';
+    document.getElementById('eco-bottles').textContent = '0';
+    return;
+  }
+
+  empty.style.display = 'none';
+  list.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-img" style="background:${item.bg}">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-sub">${item.category} · Recycled Plastic</div>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+        <div class="cart-item-price">${(item.price * item.qty).toFixed(2)} $</div>
+        <button class="cart-remove" onclick="removeFromCart(${item.id})">✕</button>
+      </div>
+    </div>
+  `).join('');
+
+  const subtotal = cart.reduce((s, c) => s + c.price * c.qty, 0);
+  document.getElementById('cart-subtotal').textContent = subtotal.toFixed(2) + ' $';
+  document.getElementById('cart-total').textContent = subtotal.toFixed(2) + ' $';
+  document.getElementById('eco-bottles').textContent = Math.round(subtotal / 0.5);
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+  updateBadge();
+  renderCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  updateBadge();
+  renderCart();
+}
+
+function checkout() {
+  cart = [];
+  updateBadge();
+  renderCart();
+  showToast('✅ Order placed! Thank you for caring about the planet 🌍');
+  showPage('home');
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Init
+renderProducts('home-products', PRODUCTS.slice(0, 4));
+renderProducts('catalogue-products', PRODUCTS);
+</script>
+</body>
+</html>
